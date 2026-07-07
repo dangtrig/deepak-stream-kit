@@ -1,33 +1,43 @@
 body{
     margin:0;
-    font-family:Arial, sans-serif;
     background:#121212;
     color:white;
+    font-family:Arial,sans-serif;
     text-align:center;
 }
 
-h1{
+#loginPage,#dashboard{
     margin-top:80px;
-    color:#00d4ff;
 }
 
-p{
-    color:#cccccc;
-    font-size:18px;
+h1{
+    color:#00c8ff;
 }
 
-button{
-    padding:12px 24px;
+input{
+    width:260px;
+    padding:12px;
     margin:10px;
     border:none;
     border-radius:8px;
-    background:#00d4ff;
-    color:black;
-    font-size:16px;
-    cursor:pointer;
+}
+
+button{
+    padding:12px 20px;
+    margin:8px;
+    border:none;
+    border-radius:8px;
+    background:#00c8ff;
+    color:#000;
     font-weight:bold;
+    cursor:pointer;
 }
 
 button:hover{
-    background:#00aacc;
+    background:#00a8d8;
+}
+
+#status{
+    margin-top:20px;
+    font-size:18px;
 }
