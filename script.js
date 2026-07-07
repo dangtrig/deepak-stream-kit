@@ -1,9 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -42,6 +44,24 @@ document.getElementById("loginBtn").onclick = async () => {
 };
 
 document.getElementById("logoutBtn").onclick = async () => {
-  await signOut(auth);
-  status.innerText = "👋 Logged Out";
+  try {
+    await signOut(auth);
+    status.innerText = "👋 Logged Out";
+  } catch (e) {
+    status.innerText = e.message;
+  }
+};
+
+document.getElementById("resetBtn").onclick = async () => {
+  if (email.value === "") {
+    status.innerText = "Enter your email first.";
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email.value);
+    status.innerText = "📧 Password reset email sent.";
+  } catch (e) {
+    status.innerText = e.message;
+  }
 };
