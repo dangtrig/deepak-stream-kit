@@ -5,7 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -25,9 +26,16 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const status = document.getElementById("status");
 
+const loginPage = document.getElementById("loginPage");
+const dashboard = document.getElementById("dashboard");
+
 document.getElementById("signupBtn").onclick = async () => {
   try {
-    await createUserWithEmailAndPassword(auth, email.value, password.value);
+    await createUserWithEmailAndPassword(
+      auth,
+      email.value,
+      password.value
+    );
     status.innerText = "✅ Account Created";
   } catch (e) {
     status.innerText = e.message;
@@ -36,7 +44,11 @@ document.getElementById("signupBtn").onclick = async () => {
 
 document.getElementById("loginBtn").onclick = async () => {
   try {
-    await signInWithEmailAndPassword(auth, email.value, password.value);
+    await signInWithEmailAndPassword(
+      auth,
+      email.value,
+      password.value
+    );
     status.innerText = "✅ Login Successful";
   } catch (e) {
     status.innerText = e.message;
@@ -65,3 +77,21 @@ document.getElementById("resetBtn").onclick = async () => {
     status.innerText = e.message;
   }
 };
+
+if (document.getElementById("logoutBtn2")) {
+  document.getElementById("logoutBtn2").onclick = async () => {
+    await signOut(auth);
+  };
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (loginPage && dashboard) {
+    if (user) {
+      loginPage.style.display = "none";
+      dashboard.style.display = "block";
+    } else {
+      loginPage.style.display = "block";
+      dashboard.style.display = "none";
+    }
+  }
+});
