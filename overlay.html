@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overlay</title>
+
+<style>
+body{
+margin:0;
+background:transparent;
+overflow:hidden;
+font-family:Arial,sans-serif;
+}
+
+#banner{
+position:absolute;
+top:20px;
+left:20px;
+background:#111;
+color:white;
+padding:12px 20px;
+border-radius:10px;
+font-size:24px;
+}
+
+#text{
+position:absolute;
+right:20px;
+bottom:270px;
+background:#111;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+font-size:22px;
+}
+
+#qr{
+position:absolute;
+right:20px;
+bottom:20px;
+width:220px;
+background:white;
+padding:10px;
+border-radius:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="banner">
+Deepak Stream Kit
+</div>
+
+<div id="text">
+Support ❤️
+</div>
+
+<img id="qr"
+src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay">
+
+</body>
+</html>
